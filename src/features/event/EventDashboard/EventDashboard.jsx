@@ -1,9 +1,10 @@
-import React from "react";
-import { Grid, Button } from "semantic-ui-react";
-import EventList from "../EventList/EventList";
-import EventForm from "../EventForm/EventForm";
-import { connect } from "react-redux";
-import { openEventForm } from "../eventSlice";
+import React from 'react';
+import { Grid, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
+import { openEventForm } from '../eventSlice';
+import EventList from '../EventList/EventList';
+import EventForm from '../EventForm/EventForm';
 
 const EventDashboard = ({ eventFormVisible, openEventForm }) => {
   return (

@@ -1,6 +1,7 @@
-import React from "react";
-import EventListItem from "./EventListItem";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
+
+import EventListItem from './EventListItem';
 
 const EventList = ({ events }) => {
   return (

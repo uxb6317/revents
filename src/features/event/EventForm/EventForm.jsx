@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Segment, Form, Button } from "semantic-ui-react";
-import { connect } from "react-redux";
-import { createEvent, updateEvent, closeEventForm } from "../eventSlice";
+import React, { useState, useEffect } from 'react';
+import { Segment, Form, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
+import { createEvent, updateEvent, closeEventForm } from '../eventSlice';
 
 const INITIAL_FORM = {
-  title: "",
-  date: "",
-  city: "",
-  venue: "",
-  hostedBy: ""
+  title: '',
+  date: '',
+  city: '',
+  venue: '',
+  hostedBy: ''
 };
 
 const EventForm = ({

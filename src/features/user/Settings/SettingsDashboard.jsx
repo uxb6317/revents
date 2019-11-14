@@ -1,11 +1,12 @@
-import React from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
-import SettingsNav from "./SettingsNav";
-import BasicPage from "../../../pages/BasicPage";
-import AboutPage from "../../../pages/AboutPage";
-import PhotosPage from "../../../pages/PhotosPage";
-import AccountPage from "../../../pages/AccountPage";
+import React from 'react';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react';
+
+import SettingsNav from './SettingsNav';
+import BasicPage from '../../../pages/BasicPage';
+import AboutPage from '../../../pages/AboutPage';
+import PhotosPage from '../../../pages/PhotosPage';
+import AccountPage from '../../../pages/AccountPage';
 
 const SettingsDashboard = () => {
   return (

@@ -1,9 +1,10 @@
-import React from "react";
-import { Segment, Item, Icon, Button, List } from "semantic-ui-react";
-import EventListAttendee from "./EventListAttendee";
-import { connect } from "react-redux";
-import { selectEvent, deleteEvent } from "../eventSlice";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Segment, Item, Icon, Button, List } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
+import { selectEvent, deleteEvent } from '../eventSlice';
+import EventListAttendee from './EventListAttendee';
 
 const EventListItem = ({ event, selectEvent, deleteEvent }) => {
   const {
@@ -40,8 +41,8 @@ const EventListItem = ({ event, selectEvent, deleteEvent }) => {
       <Segment secondary>
         <List horizontal>
           {attendees &&
-            attendees.map(attendee => (
-              <EventListAttendee key={attendee.id} {...attendee} />
+            attendees.map((attendee, i) => (
+              <EventListAttendee key={i} {...attendee} />
             ))}
         </List>
       </Segment>

@@ -1,10 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Grid } from "semantic-ui-react";
-import EventDetailHeader from "../features/event/EventDetail/EventDetailHeader";
-import EventDetailChat from "../features/event/EventDetail/EventDetailChat";
-import EventDetailInfo from "../features/event/EventDetail/EventDetailInfo";
-import EventDetailSidebar from "../features/event/EventDetail/EventDetailSidebar";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Grid } from 'semantic-ui-react';
+
+import EventDetailHeader from '../features/event/EventDetail/EventDetailHeader';
+import EventDetailChat from '../features/event/EventDetail/EventDetailChat';
+import EventDetailInfo from '../features/event/EventDetail/EventDetailInfo';
+import EventDetailSidebar from '../features/event/EventDetail/EventDetailSidebar';
 
 const EventDetailPage = ({ event }) => {
   return (
