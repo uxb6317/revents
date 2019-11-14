@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react';
+import React from "react";
+import { connect } from "react-redux";
+import { Grid } from "semantic-ui-react";
 
-import EventDetailHeader from '../features/event/EventDetail/EventDetailHeader';
-import EventDetailChat from '../features/event/EventDetail/EventDetailChat';
-import EventDetailInfo from '../features/event/EventDetail/EventDetailInfo';
-import EventDetailSidebar from '../features/event/EventDetail/EventDetailSidebar';
+import EventDetailHeader from "../features/event/EventDetail/EventDetailHeader";
+import EventDetailChat from "../features/event/EventDetail/EventDetailChat";
+import EventDetailInfo from "../features/event/EventDetail/EventDetailInfo";
+import EventDetailSidebar from "../features/event/EventDetail/EventDetailSidebar";
 
 const EventDetailPage = ({ event }) => {
   return (
@@ -22,12 +22,12 @@ const EventDetailPage = ({ event }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ eventsState: { events } }, ownProps) => {
   const eventId = ownProps.match.params.id;
   let event = {};
 
-  if (eventId && state.events.events.length > 0) {
-    event = state.events.events.filter(event => event.id === eventId)[0];
+  if (eventId && events.length > 0) {
+    event = events.filter(event => event.id === eventId)[0];
   }
 
   return { event };

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { Menu, Container, Button } from 'semantic-ui-react';
-import { NavLink, Link, withRouter } from 'react-router-dom';
+import React, { useState } from "react";
+import { Menu, Container, Button } from "semantic-ui-react";
+import { NavLink, Link, useHistory } from "react-router-dom";
 
-import SignedOutMenu from '../menus/SignedOutMenu';
-import SignedInMenu from '../menus/SignedInMenu';
+import SignedOutMenu from "../menus/SignedOutMenu";
+import SignedInMenu from "../menus/SignedInMenu";
 
-const NavBar = ({ history }) => {
+const NavBar = () => {
   const [authenticated, setAuthenticated] = useState(true);
+  const history = useHistory();
 
   const handleSignIn = () => setAuthenticated(true);
   const handleSignOut = () => {
     setAuthenticated(false);
-    history.push('/');
+    history.push("/");
   };
 
   return (
@@ -43,4 +44,4 @@ const NavBar = ({ history }) => {
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;

@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Segment, Item, Icon, Button, List } from 'semantic-ui-react';
-import { connect } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Segment, Item, Icon, Button, List } from "semantic-ui-react";
+import { connect } from "react-redux";
 
-import { selectEvent, deleteEvent } from '../eventSlice';
-import EventListAttendee from './EventListAttendee';
+import { deleteEvent } from "../eventSlice";
+import EventListAttendee from "./EventListAttendee";
 
-const EventListItem = ({ event, selectEvent, deleteEvent }) => {
+const EventListItem = ({ event, deleteEvent }) => {
   const {
     hostPhotoURL,
     title,
@@ -69,5 +69,5 @@ const EventListItem = ({ event, selectEvent, deleteEvent }) => {
 
 export default connect(
   null,
-  { selectEvent, deleteEvent }
+  { deleteEvent }
 )(EventListItem);
