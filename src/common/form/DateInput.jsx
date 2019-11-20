@@ -1,8 +1,8 @@
-import React from "react";
-import { Form } from "semantic-ui-react";
-import { useField } from "formik";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import React from 'react';
+import { Form } from 'semantic-ui-react';
+import { useField } from 'formik';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const DateInput = ({
   field,
@@ -13,18 +13,31 @@ const DateInput = ({
 }) => {
   const [input, meta] = useField(field);
   const { touched, error } = meta;
+  const { onBlur, value, name } = input;
 
   return (
-    <Form.Field error={touched && !!error}>
-      <label>{label}</label>
-      <DatePicker
-        {...props}
-        placeholderText={placeholder}
-        selected={input.value ? new Date(input.value) : null}
-        onChange={value => setFieldValue(input.name, value.toString())}
-        onChangeRaw={e => e.preventDefault()}
-      />
-    </Form.Field>
+    <Form.Input
+      {...input}
+      label={label}
+      control={() => (
+        <DatePicker
+          {...props}
+          id={name}
+          placeholderText={placeholder}
+          selected={value ? new Date(value) : null}
+          onChange={date => setFieldValue(name, date.toString())}
+          onBlur={onBlur}
+          onChangeRaw={e => e.preventDefault()}
+        />
+      )}
+      error={
+        touched &&
+        !!error && {
+          content: error,
+          pointing: 'above'
+        }
+      }
+    />
   );
 };
 

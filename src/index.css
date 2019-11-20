@@ -141,3 +141,8 @@ body {
 .ui.inverted.attached.segment {
   border: none;
 }
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block !important;
+}
