@@ -1,43 +1,44 @@
-import React from "react";
-import { Formik, Field } from "formik";
-import { Grid, Segment, Form, Header, Button } from "semantic-ui-react";
-import { connect } from "react-redux";
-import cuid from "cuid";
-import * as Yup from "yup";
+import React from 'react';
+import { Formik, Field } from 'formik';
+import { Grid, Segment, Form, Header, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import cuid from 'cuid';
+import * as Yup from 'yup';
 
-import { createEvent, updateEvent } from "../eventSlice";
-import TextInput from "../../../common/form/TextInput";
-import SelectInput from "../../../common/form/SelectInput";
-import TextArea from "../../../common/form/TextArea";
-import DateInput from "../../../common/form/DateInput";
+import { createEvent, updateEvent } from '../eventSlice';
+import TextInput from '../../../common/form/TextInput';
+import SelectInput from '../../../common/form/SelectInput';
+import TextArea from '../../../common/form/TextArea';
+import DateInput from '../../../common/form/DateInput';
+import PlaceInput from '../../../common/form/PlaceInput';
 
 const categoryList = [
-  { text: "Drinks", value: "drinks" },
-  { text: "Culture", value: "culture" },
-  { text: "Film", value: "film" },
-  { text: "Food", value: "food" },
-  { text: "Music", value: "music" },
-  { text: "Travel", value: "travel" }
+  { text: 'Drinks', value: 'drinks' },
+  { text: 'Culture', value: 'culture' },
+  { text: 'Film', value: 'film' },
+  { text: 'Food', value: 'food' },
+  { text: 'Music', value: 'music' },
+  { text: 'Travel', value: 'travel' }
 ];
 
 const validation = Yup.object({
   title: Yup.string()
-    .min(6, "Must be 6 characters or more")
-    .required("Required"),
-  category: Yup.string().required("Required"),
-  description: Yup.string().required("Required"),
-  city: Yup.string().required("Required"),
-  venue: Yup.string().required("Required"),
-  date: Yup.string().required("Required")
+    .min(6, 'Must be 6 characters or more')
+    .required('Required'),
+  category: Yup.string().required('Required'),
+  description: Yup.string().required('Required'),
+  city: Yup.string().required('Required'),
+  venue: Yup.string().required('Required'),
+  date: Yup.string().required('Required')
 });
 
 const emptyForm = {
-  title: "",
-  category: "",
-  description: "",
-  city: "",
-  venue: "",
-  date: ""
+  title: '',
+  category: '',
+  description: '',
+  city: '',
+  venue: '',
+  date: ''
 };
 
 const EventForm = ({ event, history, updateEvent, createEvent }) => (
@@ -57,8 +58,8 @@ const EventForm = ({ event, history, updateEvent, createEvent }) => (
               createEvent({
                 ...values,
                 id,
-                hostPhotoURL: "/assets/images/user.png",
-                hostedBy: "Bob"
+                hostPhotoURL: '/assets/images/user.png',
+                hostedBy: 'Bob'
               });
               actions.setSubmitting(false);
               history.push(`/events/${id}`);
@@ -93,7 +94,7 @@ const EventForm = ({ event, history, updateEvent, createEvent }) => (
                 label='City'
                 name='city'
                 placeholder='Event city'
-                component={TextInput}
+                component={PlaceInput}
               />
               <Field
                 label='Venue'
@@ -109,6 +110,8 @@ const EventForm = ({ event, history, updateEvent, createEvent }) => (
                 timeFormat='HH:mm'
                 placeholder='Event date'
                 component={DateInput}
+                minDate={new Date()}
+                showDisabledMonthNavigation
               />
               <Button
                 disabled={!isValid || isSubmitting || !dirty}
@@ -121,7 +124,7 @@ const EventForm = ({ event, history, updateEvent, createEvent }) => (
                 onClick={
                   event
                     ? () => history.push(`/events/${event.id}`)
-                    : () => history.push("/events")
+                    : () => history.push('/events')
                 }
                 type='button'
               >

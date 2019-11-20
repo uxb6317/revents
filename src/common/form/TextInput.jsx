@@ -2,9 +2,8 @@ import React from "react";
 import { Form } from "semantic-ui-react";
 import { useField } from "formik";
 
-const TextInput = ({ field, form, ...props }) => {
-  const [input, meta] = useField(field);
-  const { touched, error } = meta;
+const TextInput = ({ field, ...props }) => {
+  const [input, { touched, error }] = useField(field);
 
   return (
     <Form.Input

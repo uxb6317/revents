@@ -3,13 +3,13 @@ import { Form } from "semantic-ui-react";
 import { useField } from "formik";
 
 const SelectInput = ({ field, form: { setFieldValue }, ...props }) => {
-  const [input, meta] = useField(field);
-  const { touched, error } = meta;
+  const [input, { touched, error }] = useField(field);
 
   return (
     <Form.Select
       {...input} // name, value, onBlur, onChange
       {...props} // label, options, placeholder
+      id={input.name}
       error={
         touched &&
         !!error && {
