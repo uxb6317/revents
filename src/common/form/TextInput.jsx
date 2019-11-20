@@ -1,22 +1,23 @@
-import React from 'react';
-import { Form, Label } from 'semantic-ui-react';
+import React from "react";
+import { Form } from "semantic-ui-react";
+import { useField } from "formik";
 
-const TextInput = ({
-  input,
-  width,
-  type,
-  placeholder,
-  meta: { touched, error }
-}) => {
+const TextInput = ({ field, form, ...props }) => {
+  const [input, meta] = useField(field);
+  const { touched, error } = meta;
+
   return (
-    <Form.Field error={touched && !!error}>
-      <input {...input} placeholder={placeholder} type={type} />
-      {touched && error && (
-        <Label basic color='red'>
-          {error}
-        </Label>
-      )}
-    </Form.Field>
+    <Form.Input
+      {...input}
+      {...props}
+      error={
+        touched &&
+        !!error && {
+          content: error,
+          pointing: "above"
+        }
+      }
+    />
   );
 };
 

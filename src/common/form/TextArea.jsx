@@ -1,28 +1,23 @@
-import React from 'react';
-import { Form, Label } from 'semantic-ui-react';
+import React from "react";
+import { Form } from "semantic-ui-react";
+import { useField } from "formik";
 
-const TextArea = ({
-  input,
-  width,
-  rows,
-  type,
-  placeholder,
-  meta: { touched, error }
-}) => {
+const TextArea = ({ field, form, ...props }) => {
+  const [input, meta] = useField(field);
+  const { touched, error } = meta;
+
   return (
-    <Form.Field error={touched && !!error}>
-      <textarea
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        rows={rows}
-      ></textarea>
-      {touched && error && (
-        <Label basic color='red'>
-          {error}
-        </Label>
-      )}
-    </Form.Field>
+    <Form.TextArea
+      {...input}
+      {...props}
+      error={
+        touched &&
+        !!error && {
+          content: error,
+          pointing: "above"
+        }
+      }
+    />
   );
 };
 

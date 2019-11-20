@@ -1,16 +1,15 @@
-import React from 'react';
-import { Container } from 'semantic-ui-react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import React from "react";
+import { Container } from "semantic-ui-react";
+import { Route, Switch, withRouter } from "react-router-dom";
 
-import EventDashboard from './features/event/EventDashboard/EventDashboard';
-import NavBar from './features/nav/NavBar/NavBar';
-import HomePage from './pages/HomePage';
-import EventDetailPage from './pages/EventDetailPage';
-import PeopleDashboard from './features/user/PeopleDashboard/PeopleDashboard';
-import UserDetailPage from './pages/UserDetailPage';
-import SettingsDashboard from './features/user/Settings/SettingsDashboard';
-import EventForm from './features/event/EventForm/EventForm';
-import FormikForm from './features/event/EventForm/FormikForm';
+import EventDashboard from "./features/event/EventDashboard/EventDashboard";
+import NavBar from "./features/nav/NavBar/NavBar";
+import HomePage from "./pages/HomePage";
+import EventDetailPage from "./pages/EventDetailPage";
+import PeopleDashboard from "./features/user/PeopleDashboard/PeopleDashboard";
+import UserDetailPage from "./pages/UserDetailPage";
+import SettingsDashboard from "./features/user/Settings/SettingsDashboard";
+import FormikForm from "./features/event/EventForm/EventForm";
 
 function App(props) {
   return (
@@ -29,8 +28,7 @@ function App(props) {
                 <Route path='/profile/:id' component={UserDetailPage} />
                 <Route path='/settings' component={SettingsDashboard} />
                 <Route
-                  path={['/createEvent', '/manage/:id']}
-                  // component={EventForm}
+                  path={["/createEvent", "/manage/:id"]}
                   component={FormikForm}
                 />
               </Switch>
