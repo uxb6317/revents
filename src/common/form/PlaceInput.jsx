@@ -1,13 +1,14 @@
-import React from "react";
-import { Form, Segment, List } from "semantic-ui-react";
-import { useField } from "formik";
-import PlacesAutocomplete from "react-places-autocomplete";
+import React, { useState } from 'react';
+import { Form, Segment, List } from 'semantic-ui-react';
+import { useField } from 'formik';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 const PlaceInput = ({
   field,
   form: { setFieldValue },
   options,
   placeholder,
+  onSelect,
   label
 }) => {
   const [input, { touched, error }] = useField(field);
@@ -17,7 +18,11 @@ const PlaceInput = ({
     <PlacesAutocomplete
       value={value}
       onChange={address => setFieldValue(name, address)}
-      // searchOptions={options}
+      onSelect={place => {
+        onSelect(place);
+        setFieldValue(name, place);
+      }}
+      searchOptions={options}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <>
@@ -28,7 +33,7 @@ const PlaceInput = ({
               touched &&
               !!error && {
                 content: error,
-                pointing: "above"
+                pointing: 'above'
               }
             }
           />
