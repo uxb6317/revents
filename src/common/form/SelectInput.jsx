@@ -1,6 +1,6 @@
-import React from "react";
-import { Form } from "semantic-ui-react";
-import { useField } from "formik";
+import React from 'react';
+import { Form } from 'semantic-ui-react';
+import { useField } from 'formik';
 
 const SelectInput = ({ field, form: { setFieldValue }, ...props }) => {
   const [input, { touched, error }] = useField(field);
@@ -14,7 +14,7 @@ const SelectInput = ({ field, form: { setFieldValue }, ...props }) => {
         touched &&
         !!error && {
           content: error,
-          pointing: "above"
+          pointing: 'above'
         }
       }
       selectOnBlur={false}
