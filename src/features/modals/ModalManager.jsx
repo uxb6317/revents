@@ -1,18 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import TestModal from './TestModal';
-
-const modalLookup = {
-  TestModal
-};
+import { MODAL_LOOKUP } from './modalLookup';
 
 const ModalManager = ({ currentModal }) => {
   let modal = null;
 
   if (currentModal) {
     const { modalType, modalProps } = currentModal;
-    const ModalComponent = modalLookup[modalType];
+    const ModalComponent = MODAL_LOOKUP[modalType];
 
     modal = <ModalComponent {...modalProps} />;
   }
