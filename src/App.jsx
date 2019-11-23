@@ -11,34 +11,38 @@ import UserDetailPage from './pages/UserDetailPage';
 import SettingsDashboard from './features/user/Settings/SettingsDashboard';
 import FormikForm from './features/event/EventForm/EventForm';
 import AboutPage from './pages/AboutPage';
+import ModalManager from './features/modals/ModalManager';
 
 function App(props) {
   return (
-    <Switch>
-      <Route exact path='/' component={HomePage} />
-      <Route
-        path='/(.+)'
-        render={() => (
-          <>
-            <NavBar />
-            <Container className='main'>
-              <Switch key={props.location.key}>
-                <Route exact path='/events' component={EventDashboard} />
-                <Route path='/events/:id' component={EventDetailPage} />
-                <Route path='/people' component={PeopleDashboard} />
-                <Route path='/profile/:id' component={UserDetailPage} />
-                <Route path='/settings' component={SettingsDashboard} />
-                <Route path='/about' component={AboutPage} />
-                <Route
-                  path={['/createEvent', '/manage/:id']}
-                  component={FormikForm}
-                />
-              </Switch>
-            </Container>
-          </>
-        )}
-      />
-    </Switch>
+    <>
+      <ModalManager />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route
+          path='/(.+)'
+          render={() => (
+            <>
+              <NavBar />
+              <Container className='main'>
+                <Switch key={props.location.key}>
+                  <Route exact path='/events' component={EventDashboard} />
+                  <Route path='/events/:id' component={EventDetailPage} />
+                  <Route path='/people' component={PeopleDashboard} />
+                  <Route path='/profile/:id' component={UserDetailPage} />
+                  <Route path='/settings' component={SettingsDashboard} />
+                  <Route path='/about' component={AboutPage} />
+                  <Route
+                    path={['/createEvent', '/manage/:id']}
+                    component={FormikForm}
+                  />
+                </Switch>
+              </Container>
+            </>
+          )}
+        />
+      </Switch>
+    </>
   );
 }
 

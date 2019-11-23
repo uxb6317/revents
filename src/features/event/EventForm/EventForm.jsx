@@ -91,7 +91,11 @@ const EventForm = ({ event, history, updateEvent, createEvent }) => {
             }}
           >
             {({ handleSubmit, isValid, isSubmitting, dirty }) => (
-              <Form onSubmit={handleSubmit} autoComplete='off'>
+              <Form
+                loading={isSubmitting}
+                onSubmit={handleSubmit}
+                autoComplete='off'
+              >
                 <Header sub color='teal' content='Event Details' />
                 <Field
                   label='Title'
@@ -137,9 +141,8 @@ const EventForm = ({ event, history, updateEvent, createEvent }) => {
                 <Field
                   label='Date'
                   name='date'
-                  dateFormat='dd LLL yyyy h:mm a'
+                  dateFormat='dd LLL yyyy h:mm aa'
                   showTimeSelect
-                  timeFormat='HH:mm'
                   placeholder='Event date'
                   component={DateInput}
                   minDate={new Date()}

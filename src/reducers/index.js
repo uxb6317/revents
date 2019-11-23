@@ -1,6 +1,8 @@
-import { combineReducers } from "redux";
-import eventsReducer from "../features/event/eventSlice";
+import { combineReducers } from 'redux';
+import eventsReducer from '../features/event/eventSlice';
+import modalReducer from '../features/modals/modalSlice';
 
 export default combineReducers({
-  eventsState: eventsReducer
+  eventsState: eventsReducer,
+  modalState: modalReducer
 });

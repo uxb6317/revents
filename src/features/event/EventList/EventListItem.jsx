@@ -1,12 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Segment, Item, Icon, Button, List } from "semantic-ui-react";
-import { connect } from "react-redux";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Segment, Item, Icon, Button, List } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
-import { deleteEvent } from "../eventSlice";
-import EventListAttendee from "./EventListAttendee";
+import { MODAL_TYPES } from '../../modals/modalTypes';
+import { deleteEvent } from '../eventSlice';
+import EventListAttendee from './EventListAttendee';
+import { openModal } from '../../modals/modalSlice';
 
-const EventListItem = ({ event, deleteEvent }) => {
+const EventListItem = ({ event, deleteEvent, openModal }) => {
   const {
     hostPhotoURL,
     title,
@@ -22,7 +24,17 @@ const EventListItem = ({ event, deleteEvent }) => {
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image size='tiny' circular src={hostPhotoURL} />
+            <Item.Image
+              onClick={() =>
+                openModal({
+                  modalType: MODAL_TYPES.TestModal,
+                  modalProps: { data: 'fuckkkkkkkkkkkkkkk' }
+                })
+              }
+              size='tiny'
+              circular
+              src={hostPhotoURL}
+            />
             <Item.Content>
               <Item.Header as='a'>{title}</Item.Header>
               <Item.Description>
@@ -67,7 +79,4 @@ const EventListItem = ({ event, deleteEvent }) => {
   );
 };
 
-export default connect(
-  null,
-  { deleteEvent }
-)(EventListItem);
+export default connect(null, { deleteEvent, openModal })(EventListItem);
